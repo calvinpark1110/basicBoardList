@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!--mapper임을 명시하기 위한 DTD 선언 -->
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+		<mapper namespace ="com.spring.mapper.Basicmapper">
+		<select id="getAllBoard">
+			SELECT
+					*
+			FROM
+					BOARD
+		</select>
+			<insert id="insertBoard">
+				INSERT INTO BOARD(
+					WRITER,
+					SUBJECT,
+					EMAIL,
+					PASSWORD,
+					REG_DATE,
+					READ_COUNT,
+					CONTENT)
+				VALUES (
+					#{writer},
+					#{subject},
+					#{email},
+					#{password},
+					now(),
+					#{readCount},
+					#{content})
+			</insert>
+		
+		</mapper>

@@ -12,6 +12,7 @@ public class basicDTO {
 	private Date regDate;
 	private int readCount;
 	private String content;
+	
 	public int getNum() {
 		return num;
 	}
@@ -60,7 +61,5 @@ public class basicDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
-	
 	
 }
