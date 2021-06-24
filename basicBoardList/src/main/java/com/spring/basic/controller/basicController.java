@@ -1,10 +1,12 @@
 package com.spring.basic.controller;
 
-import java.util.List;
-import java.util.Map;
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,16 +18,17 @@ public class basicController {
 
 	@Autowired
 	private basicService bs;
-	
 	@RequestMapping(value="/")
 	public String main() throws Exception{
 		return "main";
 	}
+	
 	@RequestMapping(value="/boardList")
-	public String boardList() throws Exception{
+	public String boardList(Model model) throws Exception{
+		model.addAttribute("boardList", bs.getBoardList());
 		return "boardList";
 	}
-	
+
 	@RequestMapping(value="/boardWrite")
 	public String boardWrite() throws Exception {
 		return "boardWrite";
