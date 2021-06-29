@@ -29,5 +29,23 @@
 					#{readCount},
 					#{content})
 			</insert>
-		
+			
+			<select id="getOneBoard" resultType="com.spring.basic.dto.basicDTO">
+				SELECT 
+						*
+				FROM
+						BOARD
+				WHERE
+						NUM=#{num}
+			</select>	
+			
+			<update id="increaseReadCount" >
+				UPDATE
+						BOARD
+				SET
+						READ_COUNT = READ_COUNT +1
+				WHERE
+						NUM=#{num}
+			</update>
+			
 		</mapper>

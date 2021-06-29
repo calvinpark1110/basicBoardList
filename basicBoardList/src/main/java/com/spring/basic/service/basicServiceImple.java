@@ -25,4 +25,10 @@ public class basicServiceImple implements basicService {
 		return bdao.getBoardList();
 	}
 
+	@Override
+	public basicDTO getOneBoard(int num) throws Exception {
+		bdao.increaseReadCount(num);
+		return bdao.getOneBoard(num);
+	}
+
 }

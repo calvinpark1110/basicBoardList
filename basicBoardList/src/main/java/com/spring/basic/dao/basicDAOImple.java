@@ -22,5 +22,12 @@ public class basicDAOImple implements basicDAO {
 		return session.selectList("com.spring.mapper.Basicmapper.getAllBoard");
 		
 	}
+	public basicDTO getOneBoard(int num) throws Exception {
+		return session.selectOne("com.spring.mapper.Basicmapper.getOneBoard", num);
+	}
+	@Override
+	public void increaseReadCount(int num) throws Exception {
+		session.update("com.spring.mapper.Basicmapper.increaseReadCount", num);
+	}
 
 }

@@ -5,10 +5,12 @@ package com.spring.basic.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.basic.dto.basicDTO;
 import com.spring.basic.service.basicService;
@@ -18,6 +20,8 @@ public class basicController {
 
 	@Autowired
 	private basicService bs;
+	
+	
 	@RequestMapping(value="/")
 	public String main() throws Exception{
 		return "main";
@@ -38,5 +42,11 @@ public class basicController {
 	public String boardWriteAction(basicDTO bdto) throws Exception{
 		bs.insertBoard(bdto);
 		return "redirect:boardList";
+	}
+	
+	@RequestMapping(value="/boardInfo")
+	public String boardInfo(@RequestParam("num") int num, Model model ) throws Exception{
+		model.addAttribute("bdto", bs.getOneBoard(num));
+		return "info";
 	}
 }
